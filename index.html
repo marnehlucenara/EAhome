@@ -223,26 +223,57 @@
     .btn-arrow { transition: transform 0.25s; }
     .btn:hover .btn-arrow { transform: translateX(3px); }
 
-    /* Hero portrait column */
+    /* Hero portrait column - refined for cut-out PNG headshot with breakout effect */
     .hero-portrait-wrap {
       position: relative;
+      width: 100%;
+      max-width: 440px;
       aspect-ratio: 4/5;
-      max-width: 380px;
       margin-left: auto;
     }
-    .hero-portrait {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* Forest green backdrop — sits lower, shorter, so the headshot breaks out above it */
+    .hero-portrait-wrap::before {
+      content: '';
+      position: absolute;
+      top: 22%;
+      left: 8%;
+      right: 8%;
+      bottom: 8%;
+      background: var(--forest);
       border-radius: 4px;
-      filter: sepia(0.08) saturate(0.92);
-      position: relative;
+      z-index: 1;
+    }
+    /* Terracotta offset frame — visible behind/beside the portrait */
+    .hero-portrait-wrap::after {
+      content: '';
+      position: absolute;
+      top: 14%;
+      left: 18%;
+      right: -4%;
+      bottom: 0;
+      border: 1.5px solid var(--terracotta);
+      border-radius: 4px;
       z-index: 2;
     }
-    /* Placeholder if no image */
-    .hero-portrait-placeholder {
+    .hero-portrait {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       width: 100%;
       height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      z-index: 3;
+      /* Subtle drop shadow grounds the cut-out against the backdrop */
+      filter: drop-shadow(0 16px 28px rgba(45, 74, 62, 0.22));
+    }
+    .hero-portrait-placeholder {
+      position: absolute;
+      top: 22%;
+      left: 8%;
+      right: 8%;
+      bottom: 8%;
       background: linear-gradient(135deg, var(--cream-deep), var(--terracotta));
       border-radius: 4px;
       display: flex;
@@ -252,24 +283,12 @@
       font-size: 5rem;
       color: var(--cream);
       font-weight: 300;
-      position: relative;
       z-index: 2;
-    }
-    .hero-portrait-wrap::after {
-      content: '';
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      width: 100%;
-      height: 100%;
-      border: 1.5px solid var(--forest);
-      border-radius: 4px;
-      z-index: 1;
     }
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 7rem; }
-      .hero-portrait-wrap { margin: 0 auto; max-width: 280px; }
+      .hero-portrait-wrap { margin: 0 auto; max-width: 320px; }
     }
 
     /* ═══════════════════════ PULLQUOTE ═══════════════════════ */
@@ -540,46 +559,63 @@
     }
     .testimonial-notice a:hover { color: var(--terracotta-deep); }
 
-    /* ═══════════════════════ USAGE POLICY ═══════════════════════ */
+    /* ═══════════════════════ USAGE POLICY (page-end, quieter) ═══════════════════════ */
     .usage-section {
       background: var(--cream-deep);
-      padding: 4rem 0;
+      padding: 4rem 0 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .usage-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .usage-header .section-label {
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .usage-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
     }
     .usage-content {
-      max-width: 780px;
+      max-width: 740px;
       margin: 0 auto;
     }
     .usage-content h3 {
       font-family: 'Fraunces', serif;
       font-weight: 500;
-      font-size: 1.2rem;
+      font-size: 1.02rem;
       color: var(--ink);
-      margin: 2rem 0 0.75rem;
-      letter-spacing: -0.01em;
+      margin: 1.5rem 0 0.5rem;
+      letter-spacing: -0.005em;
     }
-    .usage-content h3:first-of-type { margin-top: 1.5rem; }
+    .usage-content h3:first-of-type { margin-top: 1.25rem; }
     .usage-content p {
       color: var(--ink-soft);
-      line-height: 1.7;
-      font-size: 0.96rem;
-      margin-bottom: 0.75rem;
+      line-height: 1.65;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
     }
     .usage-content ul {
       color: var(--ink-soft);
-      line-height: 1.7;
-      font-size: 0.96rem;
+      line-height: 1.6;
+      font-size: 0.88rem;
       padding-left: 1.25rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
-    .usage-content ul li { margin-bottom: 0.4rem; }
+    .usage-content ul li { margin-bottom: 0.35rem; }
     .usage-content strong { color: var(--ink); font-weight: 500; }
     .usage-footer {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
       border-top: 1px solid var(--line);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: var(--ink-muted);
       font-style: italic;
+      text-align: center;
     }
 
     /* ═══════════════════════ CUSTOM VIDEO PLAYER + LIGHTBOX ═══════════════════════ */
@@ -1076,7 +1112,7 @@
 
     <div class="hero-portrait-wrap">
       <!-- Replace src with your headshot file -->
-      <img src="headshot.jpg" alt="Marneh John Luceñara" class="hero-portrait"
+      <img src="headshot.png" alt="Marneh John Luceñara" class="hero-portrait"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="hero-portrait-placeholder" style="display:none;">MJL</div>
     </div>
@@ -1409,47 +1445,6 @@
     </div>
   </section>
 
-  <!-- ═══════ USAGE POLICY ═══════ -->
-  <section id="usage" class="usage-section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Protected content</div>
-        <h2 class="section-title">Testimonial <em>usage policy</em>.</h2>
-      </div>
-
-      <div class="usage-content reveal">
-        <p>
-          Every testimonial on this site — whether video, written, or linked from a third-party platform like LinkedIn — is the intellectual property of the individual who provided it. Each one was recorded and shared with explicit permission, in the specific context of endorsing my professional work.
-        </p>
-
-        <h3>What is prohibited</h3>
-        <ul>
-          <li><strong>Reproduction or redistribution</strong> — downloading, reuploading, or hosting these videos anywhere outside this portfolio or the original platforms (YouTube, LinkedIn) without written permission.</li>
-          <li><strong>Editing, splicing, or excerpting</strong> — cutting, trimming, or recomposing any video to create a shortened, altered, or repurposed version.</li>
-          <li><strong>Decontextualized use</strong> — using any quote, clip, or still frame in a context other than endorsement of my professional work as an Executive Assistant.</li>
-          <li><strong>AI training, synthesis, or manipulation</strong> — feeding these recordings into machine learning models, voice-cloning tools, deepfake generators, or any system that produces synthetic media based on the subject's likeness or voice.</li>
-          <li><strong>Commercial use by third parties</strong> — any use of this content in marketing, promotional, or commercial material for another individual, brand, or service.</li>
-        </ul>
-
-        <h3>What is permitted</h3>
-        <ul>
-          <li>Viewing the testimonials in their original form on this portfolio or on the platforms where they're hosted (YouTube, LinkedIn).</li>
-          <li>Referring someone to this site by sharing its URL directly.</li>
-          <li>Quoting a testimonial briefly in a reference conversation, clearly attributed to the individual who gave it.</li>
-        </ul>
-
-        <h3>If you encounter unauthorized use</h3>
-        <p>
-          If you come across any testimonial featured here being used in a way that violates the terms above — including on social media, in marketing material, or in any synthetic or AI-generated content — please email me directly at <a href="mailto:marnehlucenara@gmail.com" style="color: var(--terracotta); text-decoration: underline;">marnehlucenara@gmail.com</a>. I take these protections seriously on behalf of the people who were generous enough to speak for me, and I will pursue takedowns and legal remedies where necessary.
-        </p>
-
-        <div class="usage-footer">
-          Last updated April 2026. This policy may be updated to reflect changes in platform norms or emerging AI risks.
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════ REFERENCES ═══════ -->
   <section class="references-section">
     <div class="container">
@@ -1533,6 +1528,47 @@
             Send message <span class="btn-arrow">→</span>
           </button>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ USAGE POLICY (end of page) ═══════ -->
+  <section id="usage" class="usage-section">
+    <div class="container">
+      <div class="usage-header reveal">
+        <div class="section-label">Protected content</div>
+        <h2 class="usage-title">Testimonial usage policy</h2>
+      </div>
+
+      <div class="usage-content reveal">
+        <p>
+          Every testimonial on this site — whether video, written, or linked from a third-party platform like LinkedIn — is the intellectual property of the individual who provided it. Each one was recorded and shared with explicit permission, in the specific context of endorsing my professional work.
+        </p>
+
+        <h3>What is prohibited</h3>
+        <ul>
+          <li><strong>Reproduction or redistribution</strong> — downloading, reuploading, or hosting these videos anywhere outside this portfolio or the original platforms (YouTube, LinkedIn) without written permission.</li>
+          <li><strong>Editing, splicing, or excerpting</strong> — cutting, trimming, or recomposing any video to create a shortened, altered, or repurposed version.</li>
+          <li><strong>Decontextualized use</strong> — using any quote, clip, or still frame in a context other than endorsement of my professional work as an Executive Assistant.</li>
+          <li><strong>AI training, synthesis, or manipulation</strong> — feeding these recordings into machine learning models, voice-cloning tools, deepfake generators, or any system that produces synthetic media based on the subject's likeness or voice.</li>
+          <li><strong>Commercial use by third parties</strong> — any use of this content in marketing, promotional, or commercial material for another individual, brand, or service.</li>
+        </ul>
+
+        <h3>What is permitted</h3>
+        <ul>
+          <li>Viewing the testimonials in their original form on this portfolio or on the platforms where they're hosted (YouTube, LinkedIn).</li>
+          <li>Referring someone to this site by sharing its URL directly.</li>
+          <li>Quoting a testimonial briefly in a reference conversation, clearly attributed to the individual who gave it.</li>
+        </ul>
+
+        <h3>If you encounter unauthorized use</h3>
+        <p>
+          If you come across any testimonial featured here being used in a way that violates the terms above — including on social media, in marketing material, or in any synthetic or AI-generated content — please email me directly at <a href="mailto:marnehlucenara@gmail.com" style="color: var(--terracotta); text-decoration: underline;">marnehlucenara@gmail.com</a>. I take these protections seriously on behalf of the people who were generous enough to speak for me, and I will pursue takedowns and legal remedies where necessary.
+        </p>
+
+        <div class="usage-footer">
+          Last updated April 2026. This policy may be updated to reflect changes in platform norms or emerging AI risks.
+        </div>
       </div>
     </div>
   </section>
