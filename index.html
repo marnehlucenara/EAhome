@@ -513,6 +513,79 @@
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
+    /* ═══════════════════════ TESTIMONIAL PROTECTION NOTICE ═══════════════════════ */
+    .testimonial-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: rgba(45, 74, 62, 0.06);
+      border-left: 2px solid var(--forest);
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+    .testimonial-notice svg {
+      margin-top: 0.15rem;
+      color: var(--forest);
+    }
+    .testimonial-notice a {
+      color: var(--terracotta);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+    .testimonial-notice a:hover { color: var(--terracotta-deep); }
+
+    /* ═══════════════════════ USAGE POLICY ═══════════════════════ */
+    .usage-section {
+      background: var(--cream-deep);
+      padding: 4rem 0;
+    }
+    .usage-content {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .usage-content h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin: 2rem 0 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .usage-content h3:first-of-type { margin-top: 1.5rem; }
+    .usage-content p {
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-size: 0.96rem;
+      margin-bottom: 0.75rem;
+    }
+    .usage-content ul {
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-size: 0.96rem;
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .usage-content ul li { margin-bottom: 0.4rem; }
+    .usage-content strong { color: var(--ink); font-weight: 500; }
+    .usage-footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    /* Prevent right-click save on video iframes */
+    .video-frame iframe { pointer-events: auto; }
+    .video-frame { user-select: none; }
+
     /* ═══════════════════════ TESTIMONIALS ═══════════════════════ */
     .testimonials-grid {
       display: grid;
@@ -1046,6 +1119,14 @@
         <h2 class="section-title">I'd rather let them <em>tell you</em>.</h2>
       </div>
 
+      <div class="testimonial-notice reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span>Video testimonials are the property of the individuals featured and shared with their explicit permission. Unauthorized reproduction, editing, splicing, or redistribution — including use in AI-generated content — is prohibited. <a href="#usage">See usage policy</a>.</span>
+      </div>
+
       <div class="testimonials-grid">
         <!-- Kiva — uses written quote until video arrives -->
         <div class="testimonial-card reveal">
@@ -1149,6 +1230,47 @@
               Completed Athena's rigorous EA training across inbox, calendar, travel, research, CRM, and executive communications — selected as 1 of 3 hand-picked EAs for the VIP client training track, which prepared me for my first principal-level engagement.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ USAGE POLICY ═══════ -->
+  <section id="usage" class="usage-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">Protected content</div>
+        <h2 class="section-title">Testimonial <em>usage policy</em>.</h2>
+      </div>
+
+      <div class="usage-content reveal">
+        <p>
+          Every testimonial on this site — whether video, written, or linked from a third-party platform like LinkedIn — is the intellectual property of the individual who provided it. Each one was recorded and shared with explicit permission, in the specific context of endorsing my professional work.
+        </p>
+
+        <h3>What is prohibited</h3>
+        <ul>
+          <li><strong>Reproduction or redistribution</strong> — downloading, reuploading, or hosting these videos anywhere outside this portfolio or the original platforms (YouTube, LinkedIn) without written permission.</li>
+          <li><strong>Editing, splicing, or excerpting</strong> — cutting, trimming, or recomposing any video to create a shortened, altered, or repurposed version.</li>
+          <li><strong>Decontextualized use</strong> — using any quote, clip, or still frame in a context other than endorsement of my professional work as an Executive Assistant.</li>
+          <li><strong>AI training, synthesis, or manipulation</strong> — feeding these recordings into machine learning models, voice-cloning tools, deepfake generators, or any system that produces synthetic media based on the subject's likeness or voice.</li>
+          <li><strong>Commercial use by third parties</strong> — any use of this content in marketing, promotional, or commercial material for another individual, brand, or service.</li>
+        </ul>
+
+        <h3>What is permitted</h3>
+        <ul>
+          <li>Viewing the testimonials in their original form on this portfolio or on the platforms where they're hosted (YouTube, LinkedIn).</li>
+          <li>Referring someone to this site by sharing its URL directly.</li>
+          <li>Quoting a testimonial briefly in a reference conversation, clearly attributed to the individual who gave it.</li>
+        </ul>
+
+        <h3>If you encounter unauthorized use</h3>
+        <p>
+          If you come across any testimonial featured here being used in a way that violates the terms above — including on social media, in marketing material, or in any synthetic or AI-generated content — please email me directly at <a href="mailto:marnehlucenara@gmail.com" style="color: var(--terracotta); text-decoration: underline;">marnehlucenara@gmail.com</a>. I take these protections seriously on behalf of the people who were generous enough to speak for me, and I will pursue takedowns and legal remedies where necessary.
+        </p>
+
+        <div class="usage-footer">
+          Last updated April 2026. This policy may be updated to reflect changes in platform norms or emerging AI risks.
         </div>
       </div>
     </div>
@@ -1265,6 +1387,12 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
+    });
+
+    // Prevent right-click and drag-save attempts on video elements (discourages casual copying)
+    document.querySelectorAll('.video-frame').forEach(frame => {
+      frame.addEventListener('contextmenu', e => e.preventDefault());
+      frame.addEventListener('dragstart', e => e.preventDefault());
     });
 
     // Hero reveals itself immediately (not waiting for scroll)
